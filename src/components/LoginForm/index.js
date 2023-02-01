@@ -91,6 +91,30 @@ class LoginForm extends Component {
     )
   }
 
+  onClickPremium = () => {
+    const jwtToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MjMwNjU1MzJ9.D13s5wN3Oh59aa_qtXMo3Ec4wojOx0EZh8Xr5C5sRkU'
+
+    const {history} = this.props
+
+    Cookies.set('jwt_token', jwtToken, {
+      expires: 30,
+    })
+    history.replace('/')
+  }
+
+  onClickNonPremium = () => {
+    const jwtToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhamEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTYyMzA2NTUzMn0.UEOQcIZXSvDOB9uQXLLDjHsZtYbQ6LzndIItbVhg-e4'
+
+    const {history} = this.props
+
+    Cookies.set('jwt_token', jwtToken, {
+      expires: 30,
+    })
+    history.replace('/')
+  }
+
   render() {
     const {showSubmitError, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
@@ -122,6 +146,22 @@ class LoginForm extends Component {
           <button type="submit" className="login-button">
             Login
           </button>
+          <div className="pre-btn-container">
+            <button
+              type="button"
+              className="pre-btn"
+              onClick={this.onClickPremium}
+            >
+              Guest Premium Login
+            </button>
+            <button
+              type="button"
+              className="pre-btn"
+              onClick={this.onClickNonPremium}
+            >
+              Guest Non-Premium Login
+            </button>
+          </div>
           {showSubmitError && <p className="error-message">*{errorMsg}</p>}
         </form>
       </div>
