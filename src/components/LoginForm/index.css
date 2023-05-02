@@ -7,6 +7,7 @@
   width: 90%;
   max-width: 1110px;
   margin: auto;
+  padding-bottom: 30px;
 }
 
 @media screen and (min-width: 992px) {
@@ -42,7 +43,7 @@
 }
 
 .login-website-logo-desktop-img {
-  width: 185px;
+  width: 160px;
 }
 
 @media screen and (max-width: 991px) {
@@ -117,7 +118,7 @@
   color: #ffffff;
   height: 40px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-bottom: 2px;
   background-color: #0b69ff;
   border-radius: 8px;
@@ -146,15 +147,15 @@
 .pre-btn {
   font-family: 'Roboto';
   font-weight: bold;
-  font-size: 13px;
+  font-size: 12px;
   color: #ffffff;
   height: 50px;
-  width: 48%;
-  margin-top: 18px;
-  margin-bottom: 2px;
+  width: 120px;
   background-color: #0b69ff;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   outline: none;
+  margin: 5px;
+  margin-top: 15px;
 }

@@ -36,18 +36,18 @@ class LoginForm extends Component {
   submitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    const userDetails = {username, password}
-    const url = 'https://apis.ccbp.in/login'
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(userDetails),
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    if (response.ok === true) {
-      this.onSubmitSuccess(data.jwt_token)
+    const preJwtToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MjMwNjU1MzJ9.D13s5wN3Oh59aa_qtXMo3Ec4wojOx0EZh8Xr5C5sRkU'
+    const nonPreJwtToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhamEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTYyMzA2NTUzMn0.UEOQcIZXSvDOB9uQXLLDjHsZtYbQ6LzndIItbVhg-e4'
+    const failureMsg = "username and password didn't match"
+
+    if (username === 'gobikannan' && password === '12345678') {
+      this.onSubmitSuccess(preJwtToken)
+    } else if (username === 'gobikan' && password === '12345678') {
+      this.onSubmitSuccess(nonPreJwtToken)
     } else {
-      this.onSubmitFailure(data.error_msg)
+      this.onSubmitFailure(failureMsg)
     }
   }
 
@@ -152,14 +152,14 @@ class LoginForm extends Component {
               className="pre-btn"
               onClick={this.onClickPremium}
             >
-              Guest Premium Login
+              Guest <br /> Premium
             </button>
             <button
               type="button"
               className="pre-btn"
               onClick={this.onClickNonPremium}
             >
-              Guest Non-Premium Login
+              Guest <br /> Non-Premium
             </button>
           </div>
           {showSubmitError && <p className="error-message">*{errorMsg}</p>}
